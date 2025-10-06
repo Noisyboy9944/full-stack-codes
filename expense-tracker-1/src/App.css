@@ -1,0 +1,136 @@
+/* Component Styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.expense-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-group input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-buttons {
+    display: flex;
+    align-self: flex-end;
+    gap: 10px;
+}
+
+.submit-btn {
+    align-self: flex-end;
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+}
+
+.summary {
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    color: #2c3e50;
+}
+
+.summary span {
+    font-weight: bold;
+}
+
+.expense-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.expense-table th, .expense-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.expense-table th {
+    background-color: #ecf0f1;
+    font-weight: bold;
+}
+
+.expense-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.no-expenses {
+    text-align: center;
+    color: #777;
+    padding: 20px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.delete-btn, .edit-btn, .cancel-btn {
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+.edit-btn {
+    background-color: #f39c12;
+}
+.edit-btn:hover {
+    background-color: #e67e22;
+}
+
+.cancel-btn {
+    background-color: #7f8c8d;
+}
+.cancel-btn:hover {
+    background-color: #95a5a6;
+}
