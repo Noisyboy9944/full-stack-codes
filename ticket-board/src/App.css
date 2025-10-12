@@ -1,0 +1,385 @@
+/* GitHub-like font stack */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: 1.5;
+  background-color: #0d1117;
+}
+
+.app {
+  background-color: #0d1117;
+  color: #f0f6fc;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+/* Header */
+.header {
+  text-align: left;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+}
+
+.project-title {
+  margin: 0 0 8px 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #f0f6fc;
+}
+
+.counters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #8b949e;
+}
+
+.counter-item {
+  color: #8b949e;
+}
+
+.counter-separator {
+  color: #484f58;
+}
+
+/* Add Form (GitHub "New issue" style) */
+.add-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  flex-wrap: wrap;
+  transition: border-color 0.2s ease;
+}
+
+.add-form.editing {
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 1px #58a6ff;
+}
+
+.form-input,
+.form-select {
+  flex: 1;
+  min-width: 120px;
+  padding: 8px 12px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #f0f6fc;
+  font-size: 14px;
+}
+
+.form-input::placeholder {
+  color: #8b949e;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.form-button {
+  padding: 8px 16px;
+  background: #238636;
+  color: #f0f6fc;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.form-button:hover:not(:disabled) {
+  background: #2ea043;
+}
+
+/* Board */
+.board {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #30363d;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.column-title {
+  color: #f0f6fc;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.count {
+  color: #8b949e;
+}
+
+.column-estimate {
+  color: #8b949e;
+  font-size: 12px;
+}
+
+.danger-icon {
+  color: #f85149;
+  font-size: 16px;
+}
+
+/* Cards Container */
+.cards-container {
+  min-height: 200px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+/* Cards (GitHub issue card style) */
+.card {
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+}
+
+.card:hover {
+  border-color: #484f58;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.card-number {
+  font-size: 12px;
+  color: #8b949e;
+  font-weight: 400;
+}
+
+.card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f0f6fc;
+  flex: 1;
+}
+
+.priority-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  background: #21262d;
+  border: 1px solid transparent;
+  border-radius: 20px; /* GitHub label style: pill-shaped */
+  font-size: 12px;
+  font-weight: 500;
+  color: #f0f6fc;
+  margin-bottom: 8px;
+}
+
+.p0 {
+  background: #da3633;
+  color: #f0f6fc;
+}
+
+.p1 {
+  background: #f85149; /* GitHub orange/red for P1 (medium priority) */
+  color: #f0f6fc;
+}
+
+.p2 {
+  background: #238636; /* GitHub green for P2 (lowest priority) */
+  color: #f0f6fc;
+}
+
+/* Card Actions (GitHub-like subtle text buttons at bottom-right) */
+.card-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px; /* Increased gap for text buttons */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.card:hover .card-actions {
+  opacity: 1;
+}
+
+.edit-btn,
+.delete-btn {
+  background: none;
+  border: none;
+  padding: 4px 8px; /* Padding for text */
+  cursor: pointer;
+  font-size: 12px; /* Smaller font for subtle text */
+  font-weight: 500;
+  color: #8b949e;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+  white-space: nowrap; /* Prevent text wrap */
+}
+
+.edit-btn:hover {
+  color: #58a6ff;
+  background: rgba(88, 166, 255, 0.1);
+}
+
+.delete-btn:hover {
+  color: #f85149;
+  background: rgba(248, 81, 73, 0.1);
+}
+
+/* Delete Modal (GitHub-like dialog) */
+.delete-modal {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 17, 23, 0.8); /* Dark backdrop matching GitHub */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.delete-modal-content {
+  background: #161b22;
+  padding: 24px;
+  border-radius: 6px;
+  width: 90%;
+  max-width: 400px;
+  border: 1px solid #30363d;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.modal-title {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f0f6fc;
+}
+
+.modal-description {
+  margin: 0 0 16px 0;
+  color: #8b949e;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.yes-btn,
+.no-btn {
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.yes-btn {
+  background: #da3633;
+  color: #f0f6fc;
+  border-color: #da3633;
+}
+
+.yes-btn:hover {
+  background: #bc2c2c;
+  border-color: #bc2c2c;
+}
+
+.no-btn {
+  background: transparent;
+  color: #58a6ff;
+  border-color: #58a6ff;
+}
+
+.no-btn:hover {
+  background: rgba(88, 166, 255, 0.1);
+}
+
+/* Responsive adjustments (GitHub mobile-friendly) */
+@media (max-width: 768px) {
+  .app {
+    padding: 8px;
+  }
+
+  .board {
+    flex-direction: column;
+  }
+
+  .column {
+    min-width: auto;
+    max-width: none;
+  }
+
+  .add-form {
+    flex-direction: column;
+  }
+
+  .form-input,
+  .form-select,
+  .form-button {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .card-actions {
+    position: static; /* Show buttons always on mobile */
+    opacity: 1;
+    justify-content: flex-end;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #30363d;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    font-size: 14px; /* Slightly larger on mobile */
+  }
+}
